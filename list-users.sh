@@ -3,11 +3,12 @@
 # GitHub API URL
 API_URL="https://api.github.com"
 
-# GitHub username and personal access token
-USERNAME=$username
-TOKEN=$token
+# Ask for GitHub username and token interactively
+read -p "Enter your GitHub username: " USERNAME
+read -s -p "Enter your GitHub Personal Access Token: " TOKEN
+echo ""
 
-# User and Repository information
+# User and Repository information (passed as arguments)
 REPO_OWNER=$1
 REPO_NAME=$2
 
@@ -37,6 +38,5 @@ function list_users_with_read_access {
 }
 
 # Main script
-
 echo "Listing users with read access to ${REPO_OWNER}/${REPO_NAME}..."
 list_users_with_read_access
