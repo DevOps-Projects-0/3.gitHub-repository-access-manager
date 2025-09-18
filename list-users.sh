@@ -6,6 +6,7 @@
 # Version: V1
 # 
 # This script will lists all users with read access to a GitHub repository using the GitHub REST API.
+# Inputs: export the username and token first after that we have give 2 inputs while exicuting .sh file (username and repo name).
 ########################
 
 # GitHub API URL
@@ -15,6 +16,17 @@ API_URL="https://api.github.com"
 USERNAME=$username
 TOKEN=$token
 
+# Validate input arguments
+function helper {
+local expected_cmd_args=2
+if [ $# -ne $expected_cmd_args ]; then 
+echo "please execute the script with required cmd args"
+echo "Usage: $0 <repo_owner> <repo_name>"
+exit 1
+fi
+}
+
+# Call helper first
 helper "$@"
 
 # User and Repository information
@@ -44,14 +56,6 @@ function list_users_with_read_access {
         echo "Users with read access to ${REPO_OWNER}/${REPO_NAME}:"
         echo "$collaborators"
     fi
-}
-
-function helper {
-expected_cmd_args=2
-if [ $# -ne $expected_cmd_args ]; then 
-echo "please execute the script with required cmd args"
-echo "asd"
-fi
 }
 
 # Main script
