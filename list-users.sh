@@ -29,6 +29,14 @@ fi
 # Call helper first
 helper "$@"
 
+# Check if username/token are set
+if [ -z "$USERNAME" ] || [ -z "$TOKEN" ]; then
+    echo "Please export your GitHub username and personal access token first:"
+    echo "export username='your_github_username'"
+    echo "export token='your_personal_access_token'"
+    exit 1
+fi
+
 # User and Repository information
 REPO_OWNER=$1
 REPO_NAME=$2
