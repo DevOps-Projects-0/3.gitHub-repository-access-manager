@@ -8,14 +8,14 @@
 # This script will lists all users with read access to a GitHub repository using the GitHub REST API.
 ########################
 
-helper ()
-
 # GitHub API URL
 API_URL="https://api.github.com"
 
 # GitHub username and personal access token
 USERNAME=$username
 TOKEN=$token
+
+helper ()
 
 # User and Repository information
 REPO_OWNER=$1
